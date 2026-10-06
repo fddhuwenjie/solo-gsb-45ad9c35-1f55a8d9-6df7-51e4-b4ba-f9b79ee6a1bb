@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>本地 PDF 遮盖工作台</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">PDF 遮盖工作台</div>
+    <div class="controls">
+      <label class="btn upload-btn">
+        上传 PDF（≤8 页）
+        <input id="file-input" type="file" accept="application/pdf,.pdf" hidden />
+      </label>
+      <div class="zoom-group" id="zoom-group" aria-disabled="true">
+        <button id="zoom-out" type="button" title="缩小">−</button>
+        <span id="zoom-label">100%</span>
+        <button id="zoom-in" type="button" title="放大">+</button>
+        <button id="zoom-reset" type="button" title="重置缩放">重置</button>
+      </div>
+      <button id="export-btn" class="btn primary" type="button" disabled>下载遮盖后的 PDF</button>
+    </div>
+  </header>
+
+  <div id="banner" class="banner hidden" role="alert"></div>
+
+  <main id="empty-hint" class="empty-hint">
+    <p>还没有打开文档。</p>
+    <p>点击左上角“上传 PDF”，选择一份最多 8 页的未加密 PDF。</p>
+    <ul>
+      <li>在页面上<strong>按住拖动画框</strong>即可遮盖；</li>
+      <li><strong>单击已有框</strong>可删除（命中最上层的框）；</li>
+      <li>按 <kbd>Esc</kbd> 取消正在画的框；</li>
+      <li>放大 / 缩小预览时，框始终对应同一块内容；</li>
+      <li>下载前可以逐页检查，未画框的页面也会原样进入副本。</li>
+    </ul>
+  </main>
+
+  <main id="pages" class="pages"></main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
